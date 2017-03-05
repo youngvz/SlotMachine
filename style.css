@@ -12,9 +12,10 @@
 
 
 #wheel {
-	width: 200px;
-	height: 400px;
-	background: brown;
+	background-image: url("Icons/Wheel.png");
+	background-size: 100px 200px;
+	width: 100px;
+	height: 200px;
 	text-align: center;
 	float:left;
 	margin-left: 10px;
@@ -32,9 +33,11 @@
 #slotContainer {
 	border: 4px blue solid;
 	background-color: black;
-	background-size: 1200px 800px;
-	padding-left:10%;
-	padding-right:10%;
+	background-image: url("Icons/slotImage.jpg");
+	background-size: 800px 600px;
+	background-repeat: no-repeat;
+	padding-left:5%;
+	padding-right:5%;
 	padding-top: 0;
 	padding-bottom: 15px;
 	margin-top: 10px;
@@ -49,6 +52,16 @@
 	font-size: 24pt;
 	color: white;
 }
+
+#wheelbox {
+
+	border-radius: 10px;
+	width: 800px;
+	height: 400px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
 
 
 #description {
@@ -88,3 +101,23 @@
 	opacity: .9;
 }
 
+#icon {
+	width: 30px;
+	height: 30px;
+}
+
+#lever {
+	margin-top: 100px;
+	
+	width: 80px;
+	height: 200px;
+	position: relative;
+	opacity: .9;
+
+
+}
+
+#lever:hover {
+	opacity: 1;
+
+}
