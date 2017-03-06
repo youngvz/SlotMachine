@@ -2,6 +2,9 @@
 
  session_start();
 
+
+ // Randomizes indexes on start
+
  $index1 = mt_rand(0,6);
  $index2 = mt_rand(0,6); 
  $index3 = mt_rand(0,6);
@@ -11,6 +14,8 @@
  $index7 = mt_rand(0,6);
  $index8 = mt_rand(0,6); 
  $index9 = mt_rand(0,6);
+
+// Image Array
 
  $images = array
  (
@@ -25,6 +30,7 @@
 
  );
 
+ // Initial Score Value
 
  $score = 100;
 
@@ -64,58 +70,52 @@ iframe {
 
     <img id="table" src="Icons/SlotMachineTable.png">
 
-    <div id="wheelbox">
-
+<div id="wheelbox">
         
-    
     <div id="wheel" class="clickable">
         <br>
         <img id="icon" src= <?php echo $images[$index1]; ?> >
-    <br><br>
-    <img id="icon" src= <?php echo $images[$index2]; ?> >
-    </img>
-    <br><br>
-    <img id="icon" src= <?php echo $images[$index3]; ?>>
-    </img>
-        
+        <br><br>
+        <img id="icon" src= <?php echo $images[$index2]; ?> >
+        </img>
+        <br><br>
+        <img id="icon" src= <?php echo $images[$index3]; ?>>
+        </img>
     </div>
     
     <div id="wheel" class="clickable">
         <br>
         <img id="icon" src= <?php echo $images[$index4]; ?> >
-    </img>
-    <br><br>
-    <img id="icon" src=  <?php echo $images[5]; ?> >
-    </img>
-    <br><br>
-    <img id="icon" src= <?php echo $images[$index6]; ?> >
-    </img>
-    
+        </img>
+        <br><br>
+        <img id="icon" src=  <?php echo $images[$index5]; ?> >
+        </img>
+        <br><br>
+        <img id="icon" src= <?php echo $images[$index6]; ?> >
+        </img>
     </div>
 
     <div id="wheel" class="clickable">
         <br>
         <img id="icon" src= <?php echo $images[$index7]; ?> >
-    </img>
-    <br><br>
-    <img id="icon" src=  <?php echo $images[$index8]; ?> >
-    </img>
-    <br><br>
-    <img id="icon" src= <?php echo $images[$index9]; ?> >
-    </img>
-    
+        </img>
+        <br><br>
+        <img id="icon" src=  <?php echo $images[$index8]; ?> >
+        </img>
+        <br><br>
+        <img id="icon" src= <?php echo $images[$index9]; ?> >
+        </img>
     </div>
 
 
     <div class="clickable">
         
-  <iframe  name="imgbox" id="imgbox" > </iframe>        
-    <a href="sound.mp3" target="imgbox"> <img id="lever" src="icons/Lever Up.png">
-    </img>
+      <iframe  name="imgbox" id="imgbox" > </iframe>        
+        <a href="sound.mp3" target="imgbox"> 
+            <img id="lever" src="icons/Lever Up.png"></img>
         </a>
-
-        
     </div>
+
     <img id="cartoon" src="icons/slotImage.jpg">
     <p> Your Score : <?php echo $score; ?> </p>
 </div>
