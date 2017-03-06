@@ -41,8 +41,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 function pullLever(){
- 
+    global index1, index2, index3, index4, index5, index6, index7, index8, index9;
 
+    
+     $index1 = mt_rand(0,7);
+     $index2 = mt_rand(0,7); 
+     $index3 = mt_rand(0,7);
+     $index4 = mt_rand(0,7);
+     $index5 = mt_rand(0,7); 
+     $index6 = mt_rand(0,7);
+     $index7 = mt_rand(0,7);
+     $index8 = mt_rand(0,7); 
+     $index9 = mt_rand(0,7);
 }
 
 ?>
