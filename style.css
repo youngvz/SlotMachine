@@ -33,12 +33,14 @@
 #slotContainer {
 	border: 4px blue solid;
 	background-color: black;
+	width: 800px;
+	height: 800px;
 	
 	background-position: center;
 	background-size: 700px 500px;
 	background-repeat: no-repeat;
-	padding-left:10px;
-	padding-right:5%;
+	padding-left:10%;
+	padding-right:10%;
 	padding-top: 0;
 	padding-bottom: 15px;
 	margin-top: 10px;
@@ -61,6 +63,7 @@
 	height: 400px;
 	padding-top: 10px;
 	padding-bottom: 10px;
+	background-color: black;
 }
 
 
@@ -128,4 +131,9 @@
 	height: 400px;
 	float: left;
 	padding-right: 50px;
+}
+#cartoon {
+	width: 300px;
+	height: 300px;
+	padding-right: 20%;
 }
