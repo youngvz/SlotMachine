@@ -10,12 +10,16 @@
 
 }
 
+.wheel-container {
+	margin: 0 auto;
+	position: inherit;
+}
 
-#wheel {
-	background-image: url("Icons/Wheel.png");
-	background-size: 100px 200px;
-	width: 100px;
-	height: 200px;
+
+.wheel-container #wheel {
+	width: 200px;
+	height: 400px;
+	background: brown;
 	text-align: center;
 	float:left;
 	margin-left: 10px;
@@ -27,17 +31,20 @@
 	font-family: "Comic Sans MS", cursive, sans-serif;
 	font-size: 12pt;
 	color: white;
+
+	box-shadow: 0 0 30px #666;
+-moz-box-shadow: 0 0 30px #666;
+-webkit-box-shadow: 0 0 30px #666;
+ -o-box-shadow: 0 0 30px #666;
 }
 
 
 #slotContainer {
 	border: 4px blue solid;
 	background-color: black;
-	background-image: url("Icons/slotImage.jpg");
-	background-size: 800px 600px;
-	background-repeat: no-repeat;
-	padding-left:5%;
-	padding-right:5%;
+	background-size: 1200px 800px;
+	padding-left:10%;
+	padding-right:10%;
 	padding-top: 0;
 	padding-bottom: 15px;
 	margin-top: 10px;
@@ -51,17 +58,9 @@
 	font-family: "Arial Black", Gadget, sans-serif;
 	font-size: 24pt;
 	color: white;
+
+
 }
-
-#wheelbox {
-
-	border-radius: 10px;
-	width: 800px;
-	height: 400px;
-	padding-top: 10px;
-	padding-bottom: 10px;
-}
-
 
 
 #description {
@@ -87,7 +86,7 @@
 	-moz-border-radius: 50px;
 	-webkit-border-radius: 50px;
 	padding-right: 5px;
-	padding-left:5px; 
+	padding-left:5px;
 	padding-top: 0;
 	border-radius: 5px;
 	font-family: "Comic Sans MS", cursive, sans-serif;
@@ -101,23 +100,39 @@
 	opacity: .9;
 }
 
-#icon {
-	width: 30px;
-	height: 30px;
+.spin-container {
+	background-color: white;
+	border-radius: 5px;
+	border-width: 5px;
+	border-style: solid;
+	border-color: #ccc;
+	height: 60px;
+
+	box-shadow: 0 0 30px #666;
+-moz-box-shadow: 0 0 30px #666;
+-webkit-box-shadow: 0 0 30px #666;
+ -o-box-shadow: 0 0 30px #666;
+}
+.spin-container td {
+	color: black;
+	font-size: 10px;
+
 }
 
-#lever {
-	margin-top: 100px;
-	
-	width: 80px;
+#line {
+	border-left: thin solid #ccc;
+}
+
+#line img {
+	width: 200px;
 	height: 200px;
-	position: relative;
-	opacity: .9;
-
-
 }
 
-#lever:hover {
-	opacity: 1;
-
+#spin-button {
+	width: 50px;
+	height: 50px;
+	background-color: blue;
+	border-radius: 10px;
+	color: white;
+	margin: 0 auto;
 }
