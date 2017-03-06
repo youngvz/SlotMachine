@@ -1,31 +1,21 @@
 <?php
-
  session_start();
-
-// Check if Score Variable exists, else init session score var with 100
-
+// Check if Score Variable exists, else create Session
 if (!isset($_SESSION['score'])){
   $_SESSION['score'] = 100;
 }
-// Check if Slot1,Slot2, & Slot3 Variables exists, else inits random slot sessions 
+// Check if Slot1,Slot2, & Slot3 Variables exist, else create Sessions
 // We are not using $index2,5,8 because we need to access these variables globally
-// for checkWinningValues()
-
 if (!isset($_SESSION['slot1'])){
   $_SESSION['slot1'] = mt_rand(0,6);
 }
-
 if (!isset($_SESSION['slot2'])){
   $_SESSION['slot2'] = mt_rand(0,6);
 }
-
 if (!isset($_SESSION['slot3'])){
   $_SESSION['slot3'] = mt_rand(0,6);
 }
-
- // Randomizes indexes on page reload
- // These variables are used to dynamically select icons for slot wheels
-
+ // Randomizes indexes on start
  $index1 = mt_rand(0,6);
  //$index2 = mt_rand(0,6); 
  $index3 = mt_rand(0,6);
@@ -35,13 +25,9 @@ if (!isset($_SESSION['slot3'])){
  $index7 = mt_rand(0,6);
  //$index8 = mt_rand(0,6); 
  $index9 = mt_rand(0,6);
-
-// Array of Image Strings, ordered by increasing points
-
+// Images Array
  $images = array
  (
-
-<<<<<<< HEAD
     "Icons/Linux_100.png",
     "Icons/Firefox_100.png",
     "Icons/Elephant_100.png",
@@ -49,60 +35,31 @@ if (!isset($_SESSION['slot3'])){
     "Icons/Christmas_100.png",
     "Icons/Cherry_100.png",
      "Icons/Android_100.png",
-
-=======
-    "icons/Linux_100.png",
-    "icons/Firefox_100.png",
-    "icons/Elephant_100.png",
-    "icons/Chrome_100.png",
-    "icons/Christmas_100.png",
-    "icons/Cherry_100.png",
-    "icons/Android_100.png",
->>>>>>> 0cc880197067b23199888a7dbb3e6ffde7a949b7
-
  );
-
-
- // Handles event of the POST METHOD
-
+ // Response to POST METHOD
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     if ($_SESSION['score'] == 0){
-        // Launch Modal window here, saying Game Over and prompt user to restart!
         $_SESSION['score'] = $_SESSION['score'] + 100;
     }else{
     pullLever();
     }
     
 }
-
-
 function pullLever(){
+        
     
-//    if ($_SESSION['slot1'] == $_SESSION['slot2'] && $_SESSION['slot2'] == $_SESSION['slot3'] ){
-//        checkForWinningValues();
-//    }else{
-//        $_SESSION['score']--;
-//        resetSlots();
-//    }
     
-    // Decrement Score by 1 for Lever Pull
-    // Check combos for winning values
-    // Reset Slots
+    if ($_SESSION['slot1'] == $_SESSION['slot2'] && $_SESSION['slot2'] == $_SESSION['slot3'] ){
+        checkForWinningValues();
+    }else{
+        $_SESSION['score']--;
+        $_SESSION['slot1'] = mt_rand(0,6);
+        $_SESSION['slot2'] = mt_rand(0,6);
+        $_SESSION['slot3'] = mt_rand(0,6);
+    }
     
-    $_SESSION['score']--;
-    checkForWinningValues();
-    resetSlots();
-
 }
-
-function resetSlots(){
-    $_SESSION['slot1'] = mt_rand(0,6);
-    $_SESSION['slot2'] = mt_rand(0,6);
-    $_SESSION['slot3'] = mt_rand(0,6);
-}
-
-
 function checkForWinningValues(){
     
     // Concatentate all indexes to check against Switch Statement
@@ -111,7 +68,7 @@ function checkForWinningValues(){
     
     
     // Switch statement for all winning combos    
-    // If matching case exists, increment score counter
+    
     switch($result){
         case "0|0|0":
         $_SESSION['score'] = $_SESSION['score'] + 10;
@@ -136,8 +93,14 @@ function checkForWinningValues(){
         default:
         break;
     }
+    
+    // Once score has been incremented, reset indexes
+    
+    $_SESSION['slot1'] = mt_rand(0,6);
+    $_SESSION['slot2'] = mt_rand(0,6);
+    $_SESSION['slot3'] = mt_rand(0,6);
+    
 }
-
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
