@@ -8,9 +8,14 @@
 
 <!Creating Title>
 
-<title> Slot Machine </title>
+<title> Main Page </title>
 
 <h1 id="heading">Welcome to CSC 4370 Project 2</h1>
+<style>
+iframe {
+    display: none;
+}
+</style>
 
 </head>
 
@@ -25,8 +30,7 @@
         Please Pull the Lever:
     </p>
 
-    <img id="table" src="Icons/SlotMachineTable.png">
-    <! add counter here to be under the Winnings table>
+    <img id="table" src="icons/SlotMachine_Table.png">
 
     <div id="wheelbox">
 
@@ -74,13 +78,13 @@
 
     <div class="clickable">
         
-        <img id="lever"src="icons/Lever Up.png">
+  <iframe  name="imgbox" id="imgbox" > </iframe>        
+    <a href="sound.mp3" target="imgbox"> <img id="lever" src="icons/Lever Up.png">
     </img>
-    
+        </a>
+
         
     </div>
-
-    <! add counter here to be above the Bottom Image>
     <img id="cartoon" src="icons/slotImage.jpg">
 
 </div>
