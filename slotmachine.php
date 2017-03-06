@@ -39,13 +39,13 @@ if (!isset($_SESSION['slot3'])){
  $images = array
  (
 
-    "icons/Linux_100.png",
-    "icons/Firefox_100.png",
-    "icons/Elephant_100.png",
-    "icons/Chrome_100.png",
-    "icons/Christmas_100.png",
-    "icons/Cherry_100.png",
-     "icons/Android_100.png",
+    "Icons/Linux_100.png",
+    "Icons/Firefox_100.png",
+    "Icons/Elephant_100.png",
+    "Icons/Chrome_100.png",
+    "Icons/Christmas_100.png",
+    "Icons/Cherry_100.png",
+     "Icons/Android_100.png",
 
 
  );
@@ -132,7 +132,7 @@ function checkForWinningValues(){
 
 <!Creating Title>
 
-<title> Main Page </title>
+<title> Slot Machine </title>
 
 <h1 id="heading">Welcome to CSC 4370 Project 2</h1>
 <style>
@@ -196,17 +196,16 @@ iframe {
 
     <div class="clickable">
         
-      <iframe  name="imgbox" id="imgbox" > </iframe>        
-        <a href="sound.mp3" target="imgbox"> 
-            <img id="lever" src="icons/Lever Up.png"></img>
+      <iframe  name="imgbox" id="imgbox" > </iframe> 
+        <a href="sound.mp3" target="imgbox">        
             <form action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> method="post">
-                <input type="submit" >
+                <input type="image" name="leverSubmit" src="Icons/Lever Up.png" value="Submit" style="height:200px; width:80px" />
             </form>
         </a>
     </div>
-
-    <img id="cartoon" src="icons/slotImage.jpg">
-    <center> Your Score : <?php echo $_SESSION['score']; ?> </center>
+     <center> Your Score : <?php echo $_SESSION['score']; ?> </center>
+    <img id="cartoon" src="Icons/slotImage.jpg">
+   
 </div>
 
 

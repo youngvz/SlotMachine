@@ -135,3 +135,10 @@
 	height: 300px;
 	padding-right: 20%;
 }
+
+#leverSubmit {
+	width: 80px;
+	height: 200px;
+	position: relative;
+	opacity: .9;
+}
