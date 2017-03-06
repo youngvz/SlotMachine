@@ -1,6 +1,9 @@
 <?php
 
  session_start();
+ if (!isset($_SESSION['score'])){
+  $_SESSION['score'] = 100;
+}
 
  // Randomizes indexes on start
 
@@ -31,7 +34,6 @@
 
  // Initial Score Value
 
-    $_SESSION['score'] = 100;
 
  // Response to POST METHOD
 
@@ -137,7 +139,7 @@ iframe {
     </div>
 
     <img id="cartoon" src="icons/slotImage.jpg">
-    <center> Your Score : <?php echo $_SESSION['score'] ; ?> </center>
+    <center> Your Score : <?php echo $_SESSION['score']; ?> </center>
 </div>
 
 
