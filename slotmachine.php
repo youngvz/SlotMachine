@@ -2,57 +2,129 @@
 
  session_start();
 
- $index1 = mt_rand(0,7);
- $index2 = mt_rand(0,7); 
- $index3 = mt_rand(0,7);
- $index4 = mt_rand(0,7);
- $index5 = mt_rand(0,7); 
- $index6 = mt_rand(0,7);
- $index7 = mt_rand(0,7);
- $index8 = mt_rand(0,7); 
- $index9 = mt_rand(0,7);
+ $index1 = mt_rand(0,6);
+ $index2 = mt_rand(0,6); 
+ $index3 = mt_rand(0,6);
+ $index4 = mt_rand(0,6);
+ $index5 = mt_rand(0,6); 
+ $index6 = mt_rand(0,6);
+ $index7 = mt_rand(0,6);
+ $index8 = mt_rand(0,6); 
+ $index9 = mt_rand(0,6);
 
  $images = array
  (
-    '/Icons/Android OS_100.png',
-    '/Icons/Cherry_100.png',
-    '/Icons/Christmas Star_100.png',
-    '/Icons/Chrome_100.png',
-    '/Icons/Firefox_100.png',
-    '/Icons/Linux_100.png',
-    '/Icons/Safari_100.png',
-    '/Icons/Cherry_100.png',
-    '/Icons/Elephant_100.png',
+
+    "icons/Linux_100.png",
+    "icons/Android_100.png",
+    "icons/Christmas_100.png",
+    "icons/Cherry_100.png",
+    "icons/Firefox_100.png",
+    "icons/Chrome_100.png",
+    "icons/Elephant_100.png"
+
  );
 
 
-// Create Score session variable if doesn't exist
+ $score = 100;
 
-if (isset($_SESSION['score']))
-{
-    $_SESSION['score'] = 100;
-}
-
-
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-     
-}
-
-
-function pullLever(){
-    global index1, index2, index3, index4, index5, index6, index7, index8, index9;
-
-    
-     $index1 = mt_rand(0,7);
-     $index2 = mt_rand(0,7); 
-     $index3 = mt_rand(0,7);
-     $index4 = mt_rand(0,7);
-     $index5 = mt_rand(0,7); 
-     $index6 = mt_rand(0,7);
-     $index7 = mt_rand(0,7);
-     $index8 = mt_rand(0,7); 
-     $index9 = mt_rand(0,7);
-}
 
 ?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+
+<!Creating Title>
+
+<title> Main Page </title>
+
+<h1 id="heading">Welcome to CSC 4370 Project 2</h1>
+<style>
+iframe {
+    display: none;
+}
+</style>
+
+</head>
+
+
+<body>
+
+<div id="slotContainer">    
+    <p id="description">
+        This game gives you the chance to win the big coins! Please test your luck with our Slot Machine, Good Luck!
+    </p>    
+    <p>
+        Please Pull the Lever:
+    </p>
+
+    <img id="table" src="Icons/SlotMachineTable.png">
+
+    <div id="wheelbox">
+
+        
+    
+    <div id="wheel" class="clickable">
+        <br>
+        <img id="icon" src= <?php echo $images[$index1]; ?> >
+    <br><br>
+    <img id="icon" src= <?php echo $images[$index2]; ?> >
+    </img>
+    <br><br>
+    <img id="icon" src= <?php echo $images[$index3]; ?>>
+    </img>
+        
+    </div>
+    
+    <div id="wheel" class="clickable">
+        <br>
+        <img id="icon" src= <?php echo $images[$index4]; ?> >
+    </img>
+    <br><br>
+    <img id="icon" src=  <?php echo $images[5]; ?> >
+    </img>
+    <br><br>
+    <img id="icon" src= <?php echo $images[$index6]; ?> >
+    </img>
+    
+    </div>
+
+    <div id="wheel" class="clickable">
+        <br>
+        <img id="icon" src= <?php echo $images[$index7]; ?> >
+    </img>
+    <br><br>
+    <img id="icon" src=  <?php echo $images[$index8]; ?> >
+    </img>
+    <br><br>
+    <img id="icon" src= <?php echo $images[$index9]; ?> >
+    </img>
+    
+    </div>
+
+
+    <div class="clickable">
+        
+  <iframe  name="imgbox" id="imgbox" > </iframe>        
+    <a href="sound.mp3" target="imgbox"> <img id="lever" src="icons/Lever Up.png">
+    </img>
+        </a>
+
+        
+    </div>
+    <img id="cartoon" src="icons/slotImage.jpg">
+    <p> Your Score : <?php echo $score; ?> </p>
+</div>
+
+
+</div>
+
+
+</body>
+
+
+</html>
