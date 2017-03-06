@@ -2,7 +2,6 @@
 
  session_start();
 
-
  // Randomizes indexes on start
 
  $index1 = mt_rand(0,6);
@@ -32,8 +31,26 @@
 
  // Initial Score Value
 
- $score = 100;
+    $_SESSION['score'] = 100;
 
+ // Response to POST METHOD
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    checkForWinningValues();
+}
+
+
+// BROKEN
+
+function checkForWinningValues(){
+        
+    if ($index2 = $index5 && $index5 = $index8){
+        $_SESSION['score'] = 99;
+    }else{
+        $_SESSION['score']--;
+    }
+    
+}
 
 ?>
 
@@ -113,11 +130,14 @@ iframe {
       <iframe  name="imgbox" id="imgbox" > </iframe>        
         <a href="sound.mp3" target="imgbox"> 
             <img id="lever" src="icons/Lever Up.png"></img>
+            <form action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> method="post">
+                <input type="submit" >
+            </form>
         </a>
     </div>
 
     <img id="cartoon" src="icons/slotImage.jpg">
-    <p> Your Score : <?php echo $score; ?> </p>
+    <center> Your Score : <?php echo $_SESSION['score'] ; ?> </center>
 </div>
 
 
