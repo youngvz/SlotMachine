@@ -2,10 +2,13 @@
 
  session_start();
 
+// Check if Score Variable exists, else create Session
 
 if (!isset($_SESSION['score'])){
   $_SESSION['score'] = 100;
 }
+// Check if Slot1,Slot2, & Slot3 Variables exist, else create Sessions
+// We are not using $index2,5,8 because we need to access these variables globally
 
 if (!isset($_SESSION['slot1'])){
   $_SESSION['slot1'] = mt_rand(0,6);
@@ -22,48 +25,51 @@ if (!isset($_SESSION['slot3'])){
  // Randomizes indexes on start
 
  $index1 = mt_rand(0,6);
- $index2 = mt_rand(0,6); 
+ //$index2 = mt_rand(0,6); 
  $index3 = mt_rand(0,6);
  $index4 = mt_rand(0,6);
- $index5 = mt_rand(0,6); 
+ //$index5 = mt_rand(0,6); 
  $index6 = mt_rand(0,6);
  $index7 = mt_rand(0,6);
- $index8 = mt_rand(0,6); 
+ //$index8 = mt_rand(0,6); 
  $index9 = mt_rand(0,6);
 
-// Image Array
+// Images Array
 
  $images = array
  (
 
     "icons/Linux_100.png",
-    "icons/Android_100.png",
+    "icons/Firefox_100.png",
+    "icons/Elephant_100.png",
+    "icons/Chrome_100.png",
     "icons/Christmas_100.png",
     "icons/Cherry_100.png",
-    "icons/Firefox_100.png",
-    "icons/Chrome_100.png",
-    "icons/Elephant_100.png"
+     "icons/Android_100.png",
+
 
  );
-
- // Initial Score Value
 
 
  // Response to POST METHOD
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    
+    if ($_SESSION['score'] == 0){
+        $_SESSION['score'] = $_SESSION['score'] + 100;
+    }else{
     pullLever();
+    }
+    
 }
 
 
-// BROKEN
-
 function pullLever(){
-    
-    $result = $_SESSION['slot1']."|".$_SESSION['slot2']."|".$_SESSION['slot3'];
         
+    
+    
     if ($_SESSION['slot1'] == $_SESSION['slot2'] && $_SESSION['slot2'] == $_SESSION['slot3'] ){
-        checkForWinningValues($result);
+        checkForWinningValues();
     }else{
         $_SESSION['score']--;
         $_SESSION['slot1'] = mt_rand(0,6);
@@ -73,36 +79,41 @@ function pullLever(){
     
 }
 
-function checkForWinningValues($result){
+function checkForWinningValues(){
     
-    // Make switch statement for all winning combos
+    // Concatentate all indexes to check against Switch Statement
+    
+    $result = $_SESSION['slot1']."|".$_SESSION['slot2']."|".$_SESSION['slot3'];
     
     
+    // Switch statement for all winning combos    
     
     switch($result){
         case "0|0|0":
         $_SESSION['score'] = $_SESSION['score'] + 10;
         break;
         case "1|1|1":
-        $_SESSION['score'] += 1000;
+        $_SESSION['score'] += 50;
         break;
         case "2|2|2":
-        $_SESSION['score'] = $_SESSION['score'] + 300;
+        $_SESSION['score'] = $_SESSION['score'] + 100;
         break;
         case "3|3|3":
-        $_SESSION['score'] = $_SESSION['score'] + 500;
-        break;
-        case "4|4|4":
-        $_SESSION['score'] = $_SESSION['score'] + 50;
-        break;
-        case "5|5|5":
         $_SESSION['score'] = $_SESSION['score'] + 150;
         break;
+        case "4|4|4":
+        $_SESSION['score'] = $_SESSION['score'] + 300;
+        break;
+        case "5|5|5":
+        $_SESSION['score'] = $_SESSION['score'] + 500;
+        break;
         case "6|6|6":
-        $_SESSION['score'] = $_SESSION['score'] + 100;
+        $_SESSION['score'] = $_SESSION['score'] + 1000;
         default:
         break;
     }
+    
+    // Once score has been incremented, reset indexes
     
     $_SESSION['slot1'] = mt_rand(0,6);
     $_SESSION['slot2'] = mt_rand(0,6);
