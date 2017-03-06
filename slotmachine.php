@@ -1,8 +1,22 @@
 <?php
 
  session_start();
- if (!isset($_SESSION['score'])){
+
+
+if (!isset($_SESSION['score'])){
   $_SESSION['score'] = 100;
+}
+
+if (!isset($_SESSION['slot1'])){
+  $_SESSION['slot1'] = mt_rand(0,6);
+}
+
+if (!isset($_SESSION['slot2'])){
+  $_SESSION['slot2'] = mt_rand(0,6);
+}
+
+if (!isset($_SESSION['slot3'])){
+  $_SESSION['slot3'] = mt_rand(0,6);
 }
 
  // Randomizes indexes on start
@@ -38,19 +52,61 @@
  // Response to POST METHOD
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    checkForWinningValues();
+    pullLever();
 }
 
 
 // BROKEN
 
-function checkForWinningValues(){
+function pullLever(){
+    
+    $result = $_SESSION['slot1']."|".$_SESSION['slot2']."|".$_SESSION['slot3'];
         
-    if ($index2 = $index5 && $index5 = $index8){
-        $_SESSION['score'] = 99;
+    if ($_SESSION['slot1'] == $_SESSION['slot2'] && $_SESSION['slot2'] == $_SESSION['slot3'] ){
+        checkForWinningValues($result);
     }else{
         $_SESSION['score']--;
+        $_SESSION['slot1'] = mt_rand(0,6);
+        $_SESSION['slot2'] = mt_rand(0,6);
+        $_SESSION['slot3'] = mt_rand(0,6);
     }
+    
+}
+
+function checkForWinningValues($result){
+    
+    // Make switch statement for all winning combos
+    
+    
+    
+    switch($result){
+        case "0|0|0":
+        $_SESSION['score'] = $_SESSION['score'] + 10;
+        break;
+        case "1|1|1":
+        $_SESSION['score'] += 1000;
+        break;
+        case "2|2|2":
+        $_SESSION['score'] = $_SESSION['score'] + 300;
+        break;
+        case "3|3|3":
+        $_SESSION['score'] = $_SESSION['score'] + 500;
+        break;
+        case "4|4|4":
+        $_SESSION['score'] = $_SESSION['score'] + 50;
+        break;
+        case "5|5|5":
+        $_SESSION['score'] = $_SESSION['score'] + 150;
+        break;
+        case "6|6|6":
+        $_SESSION['score'] = $_SESSION['score'] + 100;
+        default:
+        break;
+    }
+    
+    $_SESSION['slot1'] = mt_rand(0,6);
+    $_SESSION['slot2'] = mt_rand(0,6);
+    $_SESSION['slot3'] = mt_rand(0,6);
     
 }
 
@@ -95,7 +151,7 @@ iframe {
         <br>
         <img id="icon" src= <?php echo $images[$index1]; ?> >
         <br><br>
-        <img id="icon" src= <?php echo $images[$index2]; ?> >
+        <img id="icon" src= <?php echo $images[$_SESSION['slot1']]; ?> >
         </img>
         <br><br>
         <img id="icon" src= <?php echo $images[$index3]; ?>>
@@ -107,7 +163,7 @@ iframe {
         <img id="icon" src= <?php echo $images[$index4]; ?> >
         </img>
         <br><br>
-        <img id="icon" src=  <?php echo $images[$index5]; ?> >
+        <img id="icon" src=  <?php echo $images[$_SESSION['slot2']]; ?> >
         </img>
         <br><br>
         <img id="icon" src= <?php echo $images[$index6]; ?> >
@@ -119,7 +175,7 @@ iframe {
         <img id="icon" src= <?php echo $images[$index7]; ?> >
         </img>
         <br><br>
-        <img id="icon" src=  <?php echo $images[$index8]; ?> >
+        <img id="icon" src=  <?php echo $images[$_SESSION['slot3']]; ?> >
         </img>
         <br><br>
         <img id="icon" src= <?php echo $images[$index9]; ?> >
