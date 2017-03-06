@@ -39,8 +39,8 @@ if (!isset($_SESSION['slot3'])){
  // Response to POST METHOD
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
-    if ($_SESSION['score'] == 0){
-        $_SESSION['score'] = $_SESSION['score'] + 100;
+    if ($_SESSION['score'] <= 0){
+        $_SESSION['score'] = 100;
     }else{
     pullLever();
     }
@@ -53,7 +53,7 @@ function pullLever(){
     if ($_SESSION['slot1'] == $_SESSION['slot2'] && $_SESSION['slot2'] == $_SESSION['slot3'] ){
         checkForWinningValues();
     }else{
-        $_SESSION['score']--;
+        $_SESSION['score'] = $_SESSION['score'] - 5;
         $_SESSION['slot1'] = mt_rand(0,6);
         $_SESSION['slot2'] = mt_rand(0,6);
         $_SESSION['slot3'] = mt_rand(0,6);
